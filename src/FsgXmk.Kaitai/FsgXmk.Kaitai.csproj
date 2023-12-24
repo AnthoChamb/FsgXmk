@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="KaitaiStruct.Runtime.CSharp" Version="0.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FsgXmk.Core\FsgXmk.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<Compile Update="FsgXmk.cs">
+	  <AutoGen>True</AutoGen>
+	  <DependentUpon>fsg_xmk.ksy</DependentUpon>
+	</Compile>
+  </ItemGroup>
+	
+</Project>
