@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>AnthoChamb</Authors>
+    <Copyright>Copyright (c) 2023 Anthony Chamberland</Copyright>
+    <RepositoryUrl>https://github.com/AnthoChamb/FsgXmk</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,10 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
-	<Compile Update="FsgXmk.cs">
-	  <AutoGen>True</AutoGen>
-	  <DependentUpon>fsg_xmk.ksy</DependentUpon>
-	</Compile>
+    <Compile Update="FsgXmk.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>fsg_xmk.ksy</DependentUpon>
+    </Compile>
   </ItemGroup>
-	
+
 </Project>

@@ -12,6 +12,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{CC446B0A-B0D3-45AB-A199-CF21C87E753F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{C0AAFBFA-2198-4C02-A559-EF983934F1F5}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\workflows\publish.yml = .github\workflows\publish.yml
+	EndProjectSection
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E9350DF5-9388-4E4C-95D6-A1061EBA9523}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FsgXmk.Core", "src\FsgXmk.Core\FsgXmk.Core.csproj", "{788E9FBB-C605-49BF-AF5C-FA5D6834E382}"
@@ -49,6 +57,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{CC446B0A-B0D3-45AB-A199-CF21C87E753F} = {A7E8985B-B931-4542-8278-1DBE25089CF8}
+		{C0AAFBFA-2198-4C02-A559-EF983934F1F5} = {CC446B0A-B0D3-45AB-A199-CF21C87E753F}
 		{788E9FBB-C605-49BF-AF5C-FA5D6834E382} = {E9350DF5-9388-4E4C-95D6-A1061EBA9523}
 		{82F79F45-7899-43BA-8B67-BCC3E25BAAFE} = {E9350DF5-9388-4E4C-95D6-A1061EBA9523}
 		{289C5881-D810-4660-9203-F84EA6A31C34} = {E9350DF5-9388-4E4C-95D6-A1061EBA9523}
