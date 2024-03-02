@@ -5,14 +5,14 @@ using System.Collections.Generic;
 
 namespace FsgXmk.Kaitai
 {
-    public partial class FsgXmk : KaitaiStruct
+    public partial class Xmk : KaitaiStruct
     {
-        public static FsgXmk FromFile(string fileName)
+        public static Xmk FromFile(string fileName)
         {
-            return new FsgXmk(new KaitaiStream(fileName));
+            return new Xmk(new KaitaiStream(fileName));
         }
 
-        public FsgXmk(KaitaiStream p__io, KaitaiStruct p__parent = null, FsgXmk p__root = null) : base(p__io)
+        public Xmk(KaitaiStream p__io, KaitaiStruct p__parent = null, Xmk p__root = null) : base(p__io)
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
@@ -49,7 +49,7 @@ namespace FsgXmk.Kaitai
                 return new XmkHeader(new KaitaiStream(fileName));
             }
 
-            public XmkHeader(KaitaiStream p__io, FsgXmk p__parent = null, FsgXmk p__root = null) : base(p__io)
+            public XmkHeader(KaitaiStream p__io, Xmk p__parent = null, Xmk p__root = null) : base(p__io)
             {
                 m_parent = p__parent;
                 m_root = p__root;
@@ -72,8 +72,8 @@ namespace FsgXmk.Kaitai
             private byte[] __unnamed4;
             private uint _numTempos;
             private uint _numTimeSignatures;
-            private FsgXmk m_root;
-            private FsgXmk m_parent;
+            private Xmk m_root;
+            private Xmk m_parent;
             public uint Version { get { return _version; } }
             public byte[] Hash { get { return _hash; } }
             public uint NumEvents { get { return _numEvents; } }
@@ -81,8 +81,8 @@ namespace FsgXmk.Kaitai
             public byte[] Unnamed_4 { get { return __unnamed4; } }
             public uint NumTempos { get { return _numTempos; } }
             public uint NumTimeSignatures { get { return _numTimeSignatures; } }
-            public FsgXmk M_Root { get { return m_root; } }
-            public FsgXmk M_Parent { get { return m_parent; } }
+            public Xmk M_Root { get { return m_root; } }
+            public Xmk M_Parent { get { return m_parent; } }
         }
         public partial class XmkTempo : KaitaiStruct
         {
@@ -91,7 +91,7 @@ namespace FsgXmk.Kaitai
                 return new XmkTempo(new KaitaiStream(fileName));
             }
 
-            public XmkTempo(KaitaiStream p__io, FsgXmk p__parent = null, FsgXmk p__root = null) : base(p__io)
+            public XmkTempo(KaitaiStream p__io, Xmk p__parent = null, Xmk p__root = null) : base(p__io)
             {
                 m_parent = p__parent;
                 m_root = p__root;
@@ -106,13 +106,13 @@ namespace FsgXmk.Kaitai
             private uint _ticks;
             private float _start;
             private uint _tempo;
-            private FsgXmk m_root;
-            private FsgXmk m_parent;
+            private Xmk m_root;
+            private Xmk m_parent;
             public uint Ticks { get { return _ticks; } }
             public float Start { get { return _start; } }
             public uint Tempo { get { return _tempo; } }
-            public FsgXmk M_Root { get { return m_root; } }
-            public FsgXmk M_Parent { get { return m_parent; } }
+            public Xmk M_Root { get { return m_root; } }
+            public Xmk M_Parent { get { return m_parent; } }
         }
         public partial class XmkTimeSignature : KaitaiStruct
         {
@@ -121,7 +121,7 @@ namespace FsgXmk.Kaitai
                 return new XmkTimeSignature(new KaitaiStream(fileName));
             }
 
-            public XmkTimeSignature(KaitaiStream p__io, FsgXmk p__parent = null, FsgXmk p__root = null) : base(p__io)
+            public XmkTimeSignature(KaitaiStream p__io, Xmk p__parent = null, Xmk p__root = null) : base(p__io)
             {
                 m_parent = p__parent;
                 m_root = p__root;
@@ -138,14 +138,14 @@ namespace FsgXmk.Kaitai
             private uint _measure;
             private uint _numerator;
             private uint _denominator;
-            private FsgXmk m_root;
-            private FsgXmk m_parent;
+            private Xmk m_root;
+            private Xmk m_parent;
             public uint Ticks { get { return _ticks; } }
             public uint Measure { get { return _measure; } }
             public uint Numerator { get { return _numerator; } }
             public uint Denominator { get { return _denominator; } }
-            public FsgXmk M_Root { get { return m_root; } }
-            public FsgXmk M_Parent { get { return m_parent; } }
+            public Xmk M_Root { get { return m_root; } }
+            public Xmk M_Parent { get { return m_parent; } }
         }
         public partial class XmkEvent : KaitaiStruct
         {
@@ -155,12 +155,12 @@ namespace FsgXmk.Kaitai
             }
 
 
-            public enum EventChord
+            public enum XmkEventChord
             {
                 Barre = 2,
             }
 
-            public enum EventType
+            public enum XmkEventType
             {
                 Casual = 0,
                 Section = 3,
@@ -187,7 +187,7 @@ namespace FsgXmk.Kaitai
                 HopoSustainExpert = 224,
             }
 
-            public enum EventNote
+            public enum XmkEventNote
             {
                 CasualOpen = 1,
                 CasualHp = 3,
@@ -225,7 +225,7 @@ namespace FsgXmk.Kaitai
                 ExpertHp = 74,
                 Section = 128,
             }
-            public XmkEvent(KaitaiStream p__io, FsgXmk p__parent = null, FsgXmk p__root = null) : base(p__io)
+            public XmkEvent(KaitaiStream p__io, Xmk p__parent = null, Xmk p__root = null) : base(p__io)
             {
                 m_parent = p__parent;
                 m_root = p__root;
@@ -234,48 +234,48 @@ namespace FsgXmk.Kaitai
             private void _read()
             {
                 _groupIndex = m_io.ReadU4be();
-                _chord = ((EventChord) m_io.ReadU2be());
-                _type = ((EventType) m_io.ReadU1());
-                _note = ((EventNote) m_io.ReadU1());
+                _chord = ((XmkEventChord) m_io.ReadU2be());
+                _type = ((XmkEventType) m_io.ReadU1());
+                _note = ((XmkEventNote) m_io.ReadU1());
                 _start = m_io.ReadF4be();
                 _end = m_io.ReadF4be();
                 __unnamed6 = m_io.ReadBytes(4);
                 _ofsBlob = m_io.ReadU4be();
             }
             private uint _groupIndex;
-            private EventChord _chord;
-            private EventType _type;
-            private EventNote _note;
+            private XmkEventChord _chord;
+            private XmkEventType _type;
+            private XmkEventNote _note;
             private float _start;
             private float _end;
             private byte[] __unnamed6;
             private uint _ofsBlob;
-            private FsgXmk m_root;
-            private FsgXmk m_parent;
+            private Xmk m_root;
+            private Xmk m_parent;
             public uint GroupIndex { get { return _groupIndex; } }
-            public EventChord Chord { get { return _chord; } }
-            public EventType Type { get { return _type; } }
-            public EventNote Note { get { return _note; } }
+            public XmkEventChord Chord { get { return _chord; } }
+            public XmkEventType Type { get { return _type; } }
+            public XmkEventNote Note { get { return _note; } }
             public float Start { get { return _start; } }
             public float End { get { return _end; } }
             public byte[] Unnamed_6 { get { return __unnamed6; } }
             public uint OfsBlob { get { return _ofsBlob; } }
-            public FsgXmk M_Root { get { return m_root; } }
-            public FsgXmk M_Parent { get { return m_parent; } }
+            public Xmk M_Root { get { return m_root; } }
+            public Xmk M_Parent { get { return m_parent; } }
         }
         private XmkHeader _header;
         private List<XmkTempo> _tempos;
         private List<XmkTimeSignature> _timeSignatures;
         private List<XmkEvent> _events;
         private List<string> _blobs;
-        private FsgXmk m_root;
+        private Xmk m_root;
         private KaitaiStruct m_parent;
         public XmkHeader Header { get { return _header; } }
         public List<XmkTempo> Tempos { get { return _tempos; } }
         public List<XmkTimeSignature> TimeSignatures { get { return _timeSignatures; } }
         public List<XmkEvent> Events { get { return _events; } }
         public List<string> Blobs { get { return _blobs; } }
-        public FsgXmk M_Root { get { return m_root; } }
+        public Xmk M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
     }
 }

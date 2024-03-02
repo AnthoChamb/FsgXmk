@@ -18,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="FsgXmk.cs">
+    <Compile Update="Xmk.cs">
       <AutoGen>True</AutoGen>
-      <DependentUpon>fsg_xmk.ksy</DependentUpon>
+      <DependentUpon>xmk.ksy</DependentUpon>
     </Compile>
   </ItemGroup>
 

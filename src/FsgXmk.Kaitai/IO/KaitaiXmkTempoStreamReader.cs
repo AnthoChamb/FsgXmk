@@ -5,17 +5,17 @@ using System.Threading.Tasks;
 
 namespace FsgXmk.Kaitai.IO
 {
-    public class XmkTimeSignatureKaitaiStreamReader : IXmkTimeSignatureReader
+    public class KaitaiXmkTempoStreamReader : IXmkTempoReader
     {
         private readonly KaitaiStream _stream;
         private readonly bool _leaveOpen;
         private bool _disposed;
 
-        public XmkTimeSignatureKaitaiStreamReader(KaitaiStream stream) : this(stream, false)
+        public KaitaiXmkTempoStreamReader(KaitaiStream stream) : this(stream, false)
         {
         }
 
-        public XmkTimeSignatureKaitaiStreamReader(KaitaiStream stream, bool leaveOpen)
+        public KaitaiXmkTempoStreamReader(KaitaiStream stream, bool leaveOpen)
         {
             _stream = stream;
             _leaveOpen = leaveOpen;
@@ -33,12 +33,12 @@ namespace FsgXmk.Kaitai.IO
             }
         }
 
-        public IXmkTimeSignature Read()
+        public IXmkTempo Read()
         {
-            return new FsgXmk.XmkTimeSignature(_stream);
+            return new Xmk.XmkTempo(_stream);
         }
 
-        public Task<IXmkTimeSignature> ReadAsync()
+        public Task<IXmkTempo> ReadAsync()
         {
             return Task.FromResult(Read());
         }

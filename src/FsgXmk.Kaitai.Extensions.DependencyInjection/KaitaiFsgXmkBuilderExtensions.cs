@@ -9,11 +9,11 @@ namespace FsgXmk.Kaitai.Extensions.DependencyInjection
     {
         public static FsgXmkBuilder AddKaitai(this FsgXmkBuilder builder)
         {
-            builder.Services.AddSingleton<IFsgXmkStreamReaderFactory, FsgXmkKaitaiStreamReaderFactory>();
-            builder.Services.AddSingleton<IXmkEventStreamReaderFactory, XmkEventKaitaiStreamReaderFactory>();
-            builder.Services.AddSingleton<IXmkHeaderStreamReaderFactory, XmkHeaderKaitaiStreamReaderFactory>();
-            builder.Services.AddSingleton<IXmkTempoStreamReaderFactory, XmkTempoKaitaiStreamReaderFactory>();
-            builder.Services.AddSingleton<IXmkTimeSignatureStreamReaderFactory, XmkTimeSignatureKaitaiStreamReaderFactory>();
+            builder.Services.AddSingleton<IXmkStreamReaderFactory, KaitaiXmkStreamReaderFactory>();
+            builder.Services.AddSingleton<IXmkEventStreamReaderFactory, KaitaiXmkEventStreamReaderFactory>();
+            builder.Services.AddSingleton<IXmkHeaderStreamReaderFactory, KaitaiXmkHeaderStreamReaderFactory>();
+            builder.Services.AddSingleton<IXmkTempoStreamReaderFactory, KaitaiXmkTempoStreamReaderFactory>();
+            builder.Services.AddSingleton<IXmkTimeSignatureStreamReaderFactory, KaitaiXmkTimeSignatureStreamReaderFactory>();
             return builder;
         }
     }

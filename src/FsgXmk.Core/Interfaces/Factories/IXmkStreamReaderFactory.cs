@@ -3,8 +3,8 @@ using System.IO;
 
 namespace FsgXmk.Core.Interfaces.Factories
 {
-    public interface IFsgXmkStreamReaderFactory
+    public interface IXmkStreamReaderFactory
     {
-        IFsgXmkReader Create(Stream stream, bool leaveOpen);
+        IXmkReader Create(Stream stream, bool leaveOpen);
     }
 }

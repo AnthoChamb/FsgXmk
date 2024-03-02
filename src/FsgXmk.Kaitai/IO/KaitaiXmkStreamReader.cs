@@ -5,17 +5,17 @@ using System.Threading.Tasks;
 
 namespace FsgXmk.Kaitai.IO
 {
-    public class XmkEventKaitaiStreamReader : IXmkEventReader
+    public class KaitaiXmkStreamReader : IXmkReader
     {
         private readonly KaitaiStream _stream;
         private readonly bool _leaveOpen;
         private bool _disposed;
 
-        public XmkEventKaitaiStreamReader(KaitaiStream stream) : this(stream, false)
+        public KaitaiXmkStreamReader(KaitaiStream stream) : this(stream, false)
         {
         }
 
-        public XmkEventKaitaiStreamReader(KaitaiStream stream, bool leaveOpen)
+        public KaitaiXmkStreamReader(KaitaiStream stream, bool leaveOpen)
         {
             _stream = stream;
             _leaveOpen = leaveOpen;
@@ -33,12 +33,12 @@ namespace FsgXmk.Kaitai.IO
             }
         }
 
-        public IXmkEvent Read()
+        public IXmk Read()
         {
-            return new FsgXmk.XmkEvent(_stream);
+            return new Xmk(_stream);
         }
 
-        public Task<IXmkEvent> ReadAsync()
+        public Task<IXmk> ReadAsync()
         {
             return Task.FromResult(Read());
         }

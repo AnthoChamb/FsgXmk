@@ -1,5 +1,5 @@
 meta:
-  id: fsg_xmk
+  id: xmk
   file-extension: xmk
   endian: be
 seq:
@@ -62,13 +62,13 @@ types:
         type: u4
       - id: chord
         type: u2
-        enum: event_chord
+        enum: xmk_event_chord
       - id: type
         type: u1
-        enum: event_type
+        enum: xmk_event_type
       - id: note
         type: u1
-        enum: event_note
+        enum: xmk_event_note
       - id: start
         type: f4
       - id: end
@@ -77,9 +77,9 @@ types:
       - id: ofs_blob
         type: u4
     enums:
-      event_chord:
+      xmk_event_chord:
         2: barre
-      event_type:
+      xmk_event_type:
         3: section
         4: hopo_detection
         78: highway
@@ -103,7 +103,7 @@ types:
         208: hopo_sustain_medium
         216: hopo_sustain_hard
         224: hopo_sustain_expert
-      event_note:
+      xmk_event_note:
         1: casual_open
         3: casual_hp
         5: easy_b1

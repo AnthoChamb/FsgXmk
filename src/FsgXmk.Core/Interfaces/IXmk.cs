@@ -2,7 +2,7 @@
 
 namespace FsgXmk.Core.Interfaces
 {
-    public interface IFsgXmk
+    public interface IXmk
     {
         IXmkHeader Header { get; }
         IEnumerable<IXmkTempo> Tempos { get; }

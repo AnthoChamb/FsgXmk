@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 namespace FsgXmk.Kaitai
 {
-    public partial class FsgXmk : IFsgXmk
+    public partial class Xmk : IXmk
     {
-        IXmkHeader IFsgXmk.Header => Header;
-        IEnumerable<IXmkTempo> IFsgXmk.Tempos => Tempos;
-        IEnumerable<IXmkTimeSignature> IFsgXmk.TimeSignatures => TimeSignatures;
-        IEnumerable<IXmkEvent> IFsgXmk.Events => Events;
-        IEnumerable<string> IFsgXmk.Blobs => Blobs;
+        IXmkHeader IXmk.Header => Header;
+        IEnumerable<IXmkTempo> IXmk.Tempos => Tempos;
+        IEnumerable<IXmkTimeSignature> IXmk.TimeSignatures => TimeSignatures;
+        IEnumerable<IXmkEvent> IXmk.Events => Events;
+        IEnumerable<string> IXmk.Blobs => Blobs;
 
         public partial class XmkHeader : IXmkHeader
         {
@@ -31,7 +31,7 @@ namespace FsgXmk.Kaitai
         public partial class XmkEvent : IXmkEvent
         {
             ChordFlags IXmkEvent.Chord => ((ChordFlags) ((ushort) Note));
-            Core.Enums.EventType IXmkEvent.Type => ((Core.Enums.EventType) ((byte) Note));
+            EventType IXmkEvent.Type => ((EventType) ((byte) Note));
             Note IXmkEvent.Note => ((Note) ((byte) Note));
             public uint BlobOffset => OfsBlob;
         }

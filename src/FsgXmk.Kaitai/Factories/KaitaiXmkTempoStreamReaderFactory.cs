@@ -6,11 +6,11 @@ using System.IO;
 
 namespace FsgXmk.Kaitai.Factories
 {
-    public class XmkTempoKaitaiStreamReaderFactory : IXmkTempoStreamReaderFactory
+    public class KaitaiXmkTempoStreamReaderFactory : IXmkTempoStreamReaderFactory
     {
         public IXmkTempoReader Create(Stream stream, bool leaveOpen)
         {
-            return new XmkTempoKaitaiStreamReader(new KaitaiStream(stream), leaveOpen);
+            return new KaitaiXmkTempoStreamReader(new KaitaiStream(stream), leaveOpen);
         }
     }
 }
