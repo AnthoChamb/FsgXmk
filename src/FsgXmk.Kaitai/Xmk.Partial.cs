@@ -10,12 +10,12 @@ namespace FsgXmk.Kaitai
         IEnumerable<IXmkTempo> IXmk.Tempos => Tempos;
         IEnumerable<IXmkTimeSignature> IXmk.TimeSignatures => TimeSignatures;
         IEnumerable<IXmkEvent> IXmk.Events => Events;
-        IEnumerable<string> IXmk.Blobs => Blobs;
+        IEnumerable<string> IXmk.Blobs => Blobs.Values;
 
         public partial class XmkHeader : IXmkHeader
         {
             public uint EventCount => NumEvents;
-            public uint BlobCount => NumBlobs;
+            public uint BlobsLength => LenBlobs;
             public uint TempoCount => NumTempos;
             public uint TimeSignatureCount => NumTimeSignatures;
         }

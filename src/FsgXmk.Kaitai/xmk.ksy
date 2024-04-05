@@ -18,10 +18,8 @@ seq:
     repeat: expr
     repeat-expr: header.num_events
   - id: blobs
-    type: strz
-    encoding: ASCII
-    repeat: expr
-    repeat-expr: header.num_blobs
+    type: xmk_blobs
+    size: header.len_blobs
 types:
   xmk_header:
     seq:
@@ -31,7 +29,7 @@ types:
         size: 4
       - id: num_events
         type: u4
-      - id: num_blobs
+      - id: len_blobs
         type: u4
       - size: 4
       - id: num_tempos
@@ -139,3 +137,9 @@ types:
         69: expert_open
         74: expert_hp
         128: section
+  xmk_blobs:
+    seq:
+      - id: values
+        type: strz
+        encoding: ASCII
+        repeat: eos

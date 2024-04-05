@@ -5,7 +5,7 @@
         uint Version { get; }
         byte[] Hash { get; }
         uint EventCount { get; }
-        uint BlobCount { get; }
+        uint BlobsLength { get; }
         uint TempoCount { get; }
         uint TimeSignatureCount { get; }
     }
