@@ -30,8 +30,8 @@ namespace FsgXmk.Kaitai
 
         public partial class XmkEvent : IXmkEvent
         {
-            ChordFlags IXmkEvent.Chord => ((ChordFlags) ((ushort) Note));
-            EventType IXmkEvent.Type => ((EventType) ((byte) Note));
+            ChordFlags IXmkEvent.Chord => ((ChordFlags) ((ushort) Chord));
+            EventType IXmkEvent.Type => ((EventType) ((byte) Type));
             Note IXmkEvent.Note => ((Note) ((byte) Note));
             public uint BlobOffset => OfsBlob;
         }
