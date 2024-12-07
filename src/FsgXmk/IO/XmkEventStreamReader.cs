@@ -17,6 +17,10 @@ namespace FsgXmk.IO
         private readonly bool _leaveOpen;
         private bool _disposed;
 
+        public XmkEventStreamReader(Stream stream, IXmkEventByteArrayReaderFactory readerFactory) : this(stream, readerFactory, false)
+        {
+        }
+
         public XmkEventStreamReader(Stream stream, IXmkEventByteArrayReaderFactory readerFactory, bool leaveOpen)
         {
             _stream = stream;
@@ -46,7 +50,7 @@ namespace FsgXmk.IO
             {
                 throw new ObjectDisposedException(nameof(XmkEventStreamReader));
             }
-            
+
             // TODO: Use ReadExactly when available
             var bytesRead = _stream.Read(_buffer, 0, XmkConstants.XmkEventSize);
 

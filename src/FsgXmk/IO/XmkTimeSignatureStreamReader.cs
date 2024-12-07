@@ -17,6 +17,10 @@ namespace FsgXmk.IO
         private readonly bool _leaveOpen;
         private bool _disposed;
 
+        public XmkTimeSignatureStreamReader(Stream stream, IXmkTimeSignatureByteArrayReaderFactory readerFactory) : this(stream, readerFactory, false)
+        {
+        }
+
         public XmkTimeSignatureStreamReader(Stream stream, IXmkTimeSignatureByteArrayReaderFactory readerFactory, bool leaveOpen)
         {
             _stream = stream;
@@ -46,7 +50,7 @@ namespace FsgXmk.IO
             {
                 throw new ObjectDisposedException(nameof(XmkTimeSignatureStreamReader));
             }
-            
+
             // TODO: Use ReadExactly when available
             var bytesRead = _stream.Read(_buffer, 0, XmkConstants.XmkTimeSignatureSize);
 
