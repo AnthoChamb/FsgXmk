@@ -8,5 +8,6 @@
         public const int XmkTempoSize = 12;
         public const int XmkTimeSignatureSize = 16;
         public const int XmkEventSize = 24;
+        public const byte XmkBlobTerminator = 0;
     }
 }
