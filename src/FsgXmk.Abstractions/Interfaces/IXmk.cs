@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FsgXmk.Core.Interfaces
+namespace FsgXmk.Abstractions.Interfaces
 {
     public interface IXmk
     {

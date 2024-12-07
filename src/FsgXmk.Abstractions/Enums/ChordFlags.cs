@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FsgXmk.Core.Enums
+namespace FsgXmk.Abstractions.Enums
 {
     [Flags]
     public enum ChordFlags : ushort

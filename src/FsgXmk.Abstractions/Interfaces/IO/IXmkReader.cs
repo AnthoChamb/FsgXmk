@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace FsgXmk.Core.Interfaces.IO
+namespace FsgXmk.Abstractions.Interfaces.IO
 {
     public interface IXmkReader : IDisposable
     {

@@ -1,7 +1,7 @@
-﻿using FsgXmk.Core.Interfaces.IO;
+﻿using FsgXmk.Abstractions.Interfaces.IO;
 using System.IO;
 
-namespace FsgXmk.Core.Interfaces.Factories
+namespace FsgXmk.Abstractions.Interfaces.Factories
 {
     public interface IXmkTimeSignatureStreamReaderFactory
     {

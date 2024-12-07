@@ -10,7 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FsgXmk.Extensions.DependencyInjection\FsgXmk.Extensions.DependencyInjection.csproj" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FsgXmk.Kaitai\FsgXmk.Kaitai.csproj" />
   </ItemGroup>
 

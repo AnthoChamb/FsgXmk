@@ -1,5 +1,5 @@
-﻿using FsgXmk.Core.Enums;
-using FsgXmk.Core.Interfaces;
+﻿using FsgXmk.Abstractions.Enums;
+using FsgXmk.Abstractions.Interfaces;
 using System.Collections.Generic;
 
 namespace FsgXmk.Kaitai

@@ -1,6 +1,6 @@
-﻿using FsgXmk.Core.Enums;
+﻿using FsgXmk.Abstractions.Enums;
 
-namespace FsgXmk.Core.Interfaces
+namespace FsgXmk.Abstractions.Interfaces
 {
     public interface IXmkEvent
     {

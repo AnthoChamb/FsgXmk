@@ -1,5 +1,5 @@
-﻿using FsgXmk.Core.Interfaces.Factories;
-using FsgXmk.Core.Interfaces.IO;
+﻿using FsgXmk.Abstractions.Interfaces.Factories;
+using FsgXmk.Abstractions.Interfaces.IO;
 using FsgXmk.Kaitai.IO;
 using Kaitai;
 using System.IO;

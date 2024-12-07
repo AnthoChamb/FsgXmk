@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FsgXmk.Core\FsgXmk.Core.csproj" />
+    <ProjectReference Include="..\FsgXmk.Abstractions\FsgXmk.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace FsgXmk.Core.Enums
+﻿namespace FsgXmk.Abstractions.Enums
 {
     public enum EventType : byte
     {
