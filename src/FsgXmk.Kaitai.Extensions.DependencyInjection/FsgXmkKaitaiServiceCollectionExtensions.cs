@@ -8,11 +8,17 @@ namespace FsgXmk.Kaitai.Extensions.DependencyInjection
     {
         public static IServiceCollection AddFsgXmkKaitai(this IServiceCollection services)
         {
-            return services.AddSingleton<IXmkStreamReaderFactory, KaitaiXmkStreamReaderFactory>()
-                           .AddSingleton<IXmkEventStreamReaderFactory, KaitaiXmkEventStreamReaderFactory>()
+            return services.AddSingleton<IXmkHeaderByteArrayReaderFactory, KaitaiXmkHeaderByteArrayReaderFactory>()
+                           .AddSingleton<IXmkTempoByteArrayReaderFactory, KaitaiXmkTempoByteArrayReaderFactory>()
+                           .AddSingleton<IXmkTimeSignatureByteArrayReaderFactory, KaitaiXmkTimeSignatureByteArrayReaderFactory>()
+                           .AddSingleton<IXmkEventByteArrayReaderFactory, KaitaiXmkEventByteArrayReaderFactory>()
+                           .AddSingleton<IXmkBlobsByteArrayReaderFactory, KaitaiXmkBlobsByteArrayReaderFactory>()
                            .AddSingleton<IXmkHeaderStreamReaderFactory, KaitaiXmkHeaderStreamReaderFactory>()
                            .AddSingleton<IXmkTempoStreamReaderFactory, KaitaiXmkTempoStreamReaderFactory>()
-                           .AddSingleton<IXmkTimeSignatureStreamReaderFactory, KaitaiXmkTimeSignatureStreamReaderFactory>();
+                           .AddSingleton<IXmkTimeSignatureStreamReaderFactory, KaitaiXmkTimeSignatureStreamReaderFactory>()
+                           .AddSingleton<IXmkEventStreamReaderFactory, KaitaiXmkEventStreamReaderFactory>()
+                           .AddSingleton<IXmkBlobsStreamReaderFactory, KaitaiXmkBlobsStreamReaderFactory>()
+                           .AddSingleton<IXmkStreamReaderFactory, KaitaiXmkStreamReaderFactory>();
         }
     }
 }
