@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FsgXmk.Abstractions\FsgXmk.Abstractions.csproj" />
     <ProjectReference Include="..\FsgXmk.Buffers\FsgXmk.Buffers.csproj" />
   </ItemGroup>

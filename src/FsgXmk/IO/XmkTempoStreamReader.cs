@@ -1,8 +1,8 @@
-﻿using FsgXmk.Abstractions;
+﻿using CommunityToolkit.Diagnostics;
+using FsgXmk.Abstractions;
 using FsgXmk.Abstractions.Interfaces;
 using FsgXmk.Abstractions.Interfaces.Factories;
 using FsgXmk.Abstractions.Interfaces.IO;
-using System;
 using System.Buffers;
 using System.IO;
 using System.Threading.Tasks;
@@ -46,9 +46,10 @@ namespace FsgXmk.IO
 
         public IXmkTempo Read()
         {
+            // TODO: Use ObjectDisposedException.ThrowIf when available
             if (_disposed)
             {
-                throw new ObjectDisposedException(nameof(XmkTempoStreamReader));
+                ThrowHelper.ThrowObjectDisposedException(typeof(XmkTempoStreamReader).FullName);
             }
 
             // TODO: Use ReadExactly when available
@@ -64,9 +65,10 @@ namespace FsgXmk.IO
 
         public async Task<IXmkTempo> ReadAsync()
         {
+            // TODO: Use ObjectDisposedException.ThrowIf when available
             if (_disposed)
             {
-                throw new ObjectDisposedException(nameof(XmkTempoStreamReader));
+                ThrowHelper.ThrowObjectDisposedException(typeof(XmkTempoStreamReader).FullName);
             }
 
             // TODO: Use ReadExactlyAsync when available
