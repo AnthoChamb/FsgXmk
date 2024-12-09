@@ -23,7 +23,7 @@ namespace FsgXmk.Buffers.Binary
                 Span<byte> span = stackalloc byte[sizeof(float)];
                 source.Slice(0, sizeof(float)).CopyTo(span);
                 span.Reverse();
-                return MemoryMarshal.Read<float>(source);
+                return MemoryMarshal.Read<float>(span);
             }
             return MemoryMarshal.Read<float>(source);
         }
