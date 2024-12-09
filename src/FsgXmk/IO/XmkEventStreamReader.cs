@@ -3,6 +3,7 @@ using FsgXmk.Abstractions.Interfaces;
 using FsgXmk.Abstractions.Interfaces.Factories;
 using FsgXmk.Abstractions.Interfaces.IO;
 using System;
+using System.Buffers;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -24,8 +25,7 @@ namespace FsgXmk.IO
         public XmkEventStreamReader(Stream stream, IXmkEventByteArrayReaderFactory readerFactory, bool leaveOpen)
         {
             _stream = stream;
-            // TODO: Use ArrayPool when available
-            _buffer = new byte[XmkConstants.XmkEventSize];
+            _buffer = ArrayPool<byte>.Shared.Rent(XmkConstants.XmkEventSize);
             _reader = readerFactory.Create(_buffer, 0, XmkConstants.XmkEventSize);
             _leaveOpen = leaveOpen;
         }
@@ -38,7 +38,7 @@ namespace FsgXmk.IO
                 {
                     _stream.Dispose();
                 }
-                // TODO: Use ArrayPool when available
+                ArrayPool<byte>.Shared.Return(_buffer);
                 _reader.Dispose();
                 _disposed = true;
             }
