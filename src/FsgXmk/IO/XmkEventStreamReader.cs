@@ -3,6 +3,7 @@ using FsgXmk.Abstractions;
 using FsgXmk.Abstractions.Interfaces;
 using FsgXmk.Abstractions.Interfaces.Factories;
 using FsgXmk.Abstractions.Interfaces.IO;
+using FsgXmk.IO.Extensions;
 using System.Buffers;
 using System.IO;
 using System.Threading.Tasks;
@@ -52,13 +53,7 @@ namespace FsgXmk.IO
                 ThrowHelper.ThrowObjectDisposedException(typeof(XmkEventStreamReader).FullName);
             }
 
-            // TODO: Use ReadExactly when available
-            var bytesRead = _stream.Read(_buffer, 0, XmkConstants.XmkEventSize);
-
-            if (bytesRead != XmkConstants.XmkEventSize)
-            {
-                throw new EndOfStreamException();
-            }
+            _stream.ReadExactly(_buffer, 0, XmkConstants.XmkEventSize);
 
             return _reader.Read();
         }
@@ -71,13 +66,7 @@ namespace FsgXmk.IO
                 ThrowHelper.ThrowObjectDisposedException(typeof(XmkEventStreamReader).FullName);
             }
 
-            // TODO: Use ReadExactlyAsync when available
-            var bytesRead = await _stream.ReadAsync(_buffer, 0, XmkConstants.XmkEventSize);
-
-            if (bytesRead != XmkConstants.XmkEventSize)
-            {
-                throw new EndOfStreamException();
-            }
+            await _stream.ReadExactlyAsync(_buffer, 0, XmkConstants.XmkEventSize);
 
             return await _reader.ReadAsync();
         }

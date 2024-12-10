@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FsgXmk.Abstractions\FsgXmk.Abstractions.csproj" />
     <ProjectReference Include="..\FsgXmk.Buffers\FsgXmk.Buffers.csproj" />
+    <ProjectReference Include="..\FsgXmk.IO\FsgXmk.IO.csproj" />
   </ItemGroup>
 
 </Project>

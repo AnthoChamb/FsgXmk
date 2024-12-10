@@ -1,5 +1,6 @@
 ﻿using FsgXmk.Abstractions.Interfaces.Factories;
 using FsgXmk.Abstractions.Interfaces.IO;
+using FsgXmk.IO.Extensions;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -47,13 +48,7 @@ namespace FsgXmk.IO
 
             var buffer = new byte[blobsLength];
 
-            // TODO: Use ReadExactly when available
-            var bytesRead = _stream.Read(buffer, 0, buffer.Length);
-
-            if (bytesRead != buffer.Length)
-            {
-                throw new EndOfStreamException();
-            }
+            _stream.ReadExactly(buffer, 0, buffer.Length);
 
             using (var reader = _readerFactory.Create(buffer, 0, buffer.Length))
             {
@@ -70,15 +65,9 @@ namespace FsgXmk.IO
 
             var buffer = new byte[blobsLength];
 
-            // TODO: Use ReadExactlyAsync when available
-            var bytesRead = await _stream.ReadAsync(buffer, 0, buffer.Length);
+            await _stream.ReadExactlyAsync(buffer, 0, buffer.Length);
 
-            if (bytesRead != buffer.Length)
-            {
-                throw new EndOfStreamException();
-            }
-
-            using (var reader = _readerFactory.Create(buffer, 0, bytesRead))
+            using (var reader = _readerFactory.Create(buffer, 0, buffer.Length))
             {
                 return await reader.ReadAsync(blobsLength);
             }
