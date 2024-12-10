@@ -1,6 +1,8 @@
 ﻿using FsgXmk.Abstractions.Interfaces;
 using FsgXmk.Abstractions.Interfaces.IO;
+#if NETSTANDARD2_0
 using FsgXmk.Buffers.Binary;
+#endif
 using System;
 using System.Buffers.Binary;
 using System.Threading.Tasks;
@@ -35,7 +37,12 @@ namespace FsgXmk.IO
             var ticks = BinaryPrimitives.ReadUInt32BigEndian(span);
             span = span.Slice(sizeof(uint));
 
+#if NET5_0_OR_GREATER
+            var start = BinaryPrimitives.ReadSingleBigEndian(span);
+#else
             var start = FsgXmkBinaryPrimitives.ReadSingleBigEndian(span);
+#endif
+
             span = span.Slice(sizeof(float));
 
             var tempo = BinaryPrimitives.ReadUInt32BigEndian(span);

@@ -1,7 +1,9 @@
 ﻿using FsgXmk.Abstractions.Enums;
 using FsgXmk.Abstractions.Interfaces;
 using FsgXmk.Abstractions.Interfaces.IO;
+#if NETSTANDARD2_0
 using FsgXmk.Buffers.Binary;
+#endif
 using System;
 using System.Buffers.Binary;
 using System.Threading.Tasks;
@@ -45,10 +47,18 @@ namespace FsgXmk.IO
             var note = (Note) span[0];
             span = span.Slice(sizeof(byte));
 
+#if NET5_0_OR_GREATER
+            var start = BinaryPrimitives.ReadSingleBigEndian(span);
+#else
             var start = FsgXmkBinaryPrimitives.ReadSingleBigEndian(span);
+#endif
             span = span.Slice(sizeof(float));
 
+#if NET5_0_OR_GREATER
+            var end = BinaryPrimitives.ReadSingleBigEndian(span);
+#else
             var end = FsgXmkBinaryPrimitives.ReadSingleBigEndian(span);
+#endif
             span = span.Slice(sizeof(float) + 4);
 
             var blobOffset = BinaryPrimitives.ReadUInt32BigEndian(span);

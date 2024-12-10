@@ -1,9 +1,16 @@
-﻿using CommunityToolkit.Diagnostics;
+﻿#if NETSTANDARD2_0
+using CommunityToolkit.Diagnostics;
+#endif
 using FsgXmk.Abstractions;
 using FsgXmk.Abstractions.Interfaces;
 using FsgXmk.Abstractions.Interfaces.Factories;
 using FsgXmk.Abstractions.Interfaces.IO;
+#if NETSTANDARD2_0
 using FsgXmk.IO.Extensions;
+#endif
+#if NET7_0_OR_GREATER
+using System;
+#endif
 using System.Buffers;
 using System.IO;
 using System.Threading.Tasks;
@@ -47,11 +54,14 @@ namespace FsgXmk.IO
 
         public IXmkEvent Read()
         {
-            // TODO: Use ObjectDisposedException.ThrowIf when available
+#if NET7_0_OR_GREATER
+            ObjectDisposedException.ThrowIf(_disposed, typeof(XmkEventStreamReader));
+#else
             if (_disposed)
             {
                 ThrowHelper.ThrowObjectDisposedException(typeof(XmkEventStreamReader).FullName);
             }
+#endif
 
             _stream.ReadExactly(_buffer, 0, XmkConstants.XmkEventSize);
 
@@ -60,11 +70,14 @@ namespace FsgXmk.IO
 
         public async Task<IXmkEvent> ReadAsync()
         {
-            // TODO: Use ObjectDisposedException.ThrowIf when available
+#if NET7_0_OR_GREATER
+            ObjectDisposedException.ThrowIf(_disposed, typeof(XmkEventStreamReader));
+#else
             if (_disposed)
             {
                 ThrowHelper.ThrowObjectDisposedException(typeof(XmkEventStreamReader).FullName);
             }
+#endif
 
             await _stream.ReadExactlyAsync(_buffer, 0, XmkConstants.XmkEventSize);
 

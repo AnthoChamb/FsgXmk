@@ -1,6 +1,8 @@
 ﻿using FsgXmk.Abstractions.Interfaces.Factories;
 using FsgXmk.Abstractions.Interfaces.IO;
+#if NETSTANDARD2_0
 using FsgXmk.IO.Extensions;
+#endif
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
