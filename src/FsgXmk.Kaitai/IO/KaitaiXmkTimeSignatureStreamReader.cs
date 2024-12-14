@@ -38,9 +38,9 @@ namespace FsgXmk.Kaitai.IO
             return new Xmk.XmkTimeSignature(_stream);
         }
 
-        public Task<IXmkTimeSignature> ReadAsync()
+        public ValueTask<IXmkTimeSignature> ReadAsync()
         {
-            return Task.FromResult(Read());
+            return new ValueTask<IXmkTimeSignature>(Read());
         }
     }
 }

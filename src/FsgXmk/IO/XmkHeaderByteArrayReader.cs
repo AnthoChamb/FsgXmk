@@ -52,9 +52,9 @@ namespace FsgXmk.IO
             return new XmkHeader(version, hash, eventCount, blobsLength, tempoCount, timeSignatureCount);
         }
 
-        public Task<IXmkHeader> ReadAsync()
+        public ValueTask<IXmkHeader> ReadAsync()
         {
-            return Task.FromResult(Read());
+            return new ValueTask<IXmkHeader>(Read());
         }
     }
 }

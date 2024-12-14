@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net8</TargetFrameworks>
     <Authors>AnthoChamb</Authors>
     <Copyright>Copyright (c) 2023 Anthony Chamberland</Copyright>
     <RepositoryUrl>https://github.com/AnthoChamb/FsgXmk</RepositoryUrl>

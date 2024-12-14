@@ -45,9 +45,9 @@ namespace FsgXmk.IO
             return new XmkTimeSignature(ticks, measure, numerator, denominator);
         }
 
-        public Task<IXmkTimeSignature> ReadAsync()
+        public ValueTask<IXmkTimeSignature> ReadAsync()
         {
-            return Task.FromResult(Read());
+            return new ValueTask<IXmkTimeSignature>(Read());
         }
     }
 }

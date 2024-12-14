@@ -60,9 +60,9 @@ namespace FsgXmk.IO
             return blobs;
         }
 
-        public Task<IEnumerable<string>> ReadAsync(uint blobsLength)
+        public ValueTask<IEnumerable<string>> ReadAsync(uint blobsLength)
         {
-            return Task.FromResult(Read(blobsLength));
+            return new ValueTask<IEnumerable<string>>(Read(blobsLength));
         }
     }
 }

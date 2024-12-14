@@ -36,7 +36,7 @@ namespace FsgXmk.Benchmarks
         }
 
         [Benchmark]
-        public async Task<IXmk> XmkStreamReaderAsync()
+        public async ValueTask<IXmk> XmkStreamReaderAsync()
         {
             using var stream = File.OpenRead(_path);
             using var reader = _factory.Create(stream, true);
@@ -52,7 +52,7 @@ namespace FsgXmk.Benchmarks
         }
 
         [Benchmark]
-        public async Task<IXmk> KaitaiXmkStreamReaderAsync()
+        public async ValueTask<IXmk> KaitaiXmkStreamReaderAsync()
         {
             using var stream = File.OpenRead(_path);
             using var reader = _kaitaiFactory.Create(stream, true);

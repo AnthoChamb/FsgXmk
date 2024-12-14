@@ -136,7 +136,7 @@ namespace FsgXmk.IO
             return new Xmk(header, tempos, timeSignatures, events, blobs);
         }
 
-        public async Task<IXmk> ReadAsync()
+        public async ValueTask<IXmk> ReadAsync()
         {
             IXmkHeader header;
             using (var headerReader = _headerReaderFactory.Create(_stream, true))

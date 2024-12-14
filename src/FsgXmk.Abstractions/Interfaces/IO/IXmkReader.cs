@@ -6,6 +6,6 @@ namespace FsgXmk.Abstractions.Interfaces.IO
     public interface IXmkReader : IDisposable
     {
         IXmk Read();
-        Task<IXmk> ReadAsync();
+        ValueTask<IXmk> ReadAsync();
     }
 }

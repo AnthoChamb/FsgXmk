@@ -38,9 +38,9 @@ namespace FsgXmk.Kaitai.IO
             return new Xmk.XmkTempo(_stream);
         }
 
-        public Task<IXmkTempo> ReadAsync()
+        public ValueTask<IXmkTempo> ReadAsync()
         {
-            return Task.FromResult(Read());
+            return new ValueTask<IXmkTempo>(Read());
         }
     }
 }

@@ -66,9 +66,9 @@ namespace FsgXmk.IO
             return new XmkEvent(groupIndex, chord, type, note, start, end, blobOffset);
         }
 
-        public Task<IXmkEvent> ReadAsync()
+        public ValueTask<IXmkEvent> ReadAsync()
         {
-            return Task.FromResult(Read());
+            return new ValueTask<IXmkEvent>(Read());
         }
     }
 }

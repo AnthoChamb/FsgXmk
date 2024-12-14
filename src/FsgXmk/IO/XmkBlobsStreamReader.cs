@@ -58,7 +58,7 @@ namespace FsgXmk.IO
             }
         }
 
-        public async Task<IEnumerable<string>> ReadAsync(uint blobsLength)
+        public async ValueTask<IEnumerable<string>> ReadAsync(uint blobsLength)
         {
             if (blobsLength == 0)
             {

@@ -68,7 +68,7 @@ namespace FsgXmk.IO
             return _reader.Read();
         }
 
-        public async Task<IXmkTempo> ReadAsync()
+        public async ValueTask<IXmkTempo> ReadAsync()
         {
 #if NET7_0_OR_GREATER
             ObjectDisposedException.ThrowIf(_disposed, typeof(XmkTempoStreamReader));

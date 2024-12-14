@@ -68,7 +68,7 @@ namespace FsgXmk.IO
             return _reader.Read();
         }
 
-        public async Task<IXmkHeader> ReadAsync()
+        public async ValueTask<IXmkHeader> ReadAsync()
         {
 #if NET7_0_OR_GREATER
             ObjectDisposedException.ThrowIf(_disposed, typeof(XmkHeaderStreamReader));

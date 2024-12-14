@@ -50,9 +50,9 @@ namespace FsgXmk.IO
             return new XmkTempo(ticks, start, tempo);
         }
 
-        public Task<IXmkTempo> ReadAsync()
+        public ValueTask<IXmkTempo> ReadAsync()
         {
-            return Task.FromResult(Read());
+            return new ValueTask<IXmkTempo>(Read());
         }
     }
 }
