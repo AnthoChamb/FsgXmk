@@ -17,6 +17,6 @@ jobs:
       - name: Test
         run: dotnet test -c Release --no-build
       - name: Pack
-        run: dotnet pack -c Release --no-build -p:PackageVersion=${{ github.event.release.tag_name }} -o "bin/Release" --include-symbols --include-source
+        run: dotnet pack -c Release --no-build -p:PackageVersion=${{ github.event.release.tag_name }} -o "bin/Release" -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
       - name: Push NuGet packages
         run: dotnet nuget push "bin/Release/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

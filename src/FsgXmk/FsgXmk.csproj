@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net8</TargetFrameworks>
+    <Authors>AnthoChamb</Authors>
+    <Copyright>Copyright (c) 2024 Anthony Chamberland</Copyright>
+    <RepositoryUrl>https://github.com/AnthoChamb/FsgXmk</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
