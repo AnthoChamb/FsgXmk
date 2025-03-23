@@ -5,6 +5,7 @@ using FsgXmk.Abstractions;
 using FsgXmk.Abstractions.Interfaces;
 using FsgXmk.Abstractions.Interfaces.Factories;
 using FsgXmk.Abstractions.Interfaces.IO;
+using FsgXmk.Factories;
 #if NETSTANDARD2_0
 using FsgXmk.IO.Extensions;
 #endif
@@ -25,6 +26,14 @@ namespace FsgXmk.IO
 
         private readonly bool _leaveOpen;
         private bool _disposed;
+
+        public XmkHeaderStreamReader(Stream stream) : this(stream, false)
+        {
+        }
+
+        public XmkHeaderStreamReader(Stream stream, bool leaveOpen) : this(stream, new XmkHeaderByteArrayReaderFactory(), leaveOpen)
+        {
+        }
 
         public XmkHeaderStreamReader(Stream stream, IXmkHeaderByteArrayReaderFactory readerFactory) : this(stream, readerFactory, false)
         {

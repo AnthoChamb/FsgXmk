@@ -1,5 +1,6 @@
 ﻿using FsgXmk.Abstractions.Interfaces.Factories;
 using FsgXmk.Abstractions.Interfaces.IO;
+using FsgXmk.Factories;
 #if NETSTANDARD2_0
 using FsgXmk.IO.Extensions;
 #endif
@@ -17,6 +18,14 @@ namespace FsgXmk.IO
 
         private readonly bool _leaveOpen;
         private bool _disposed;
+
+        public XmkBlobsStreamReader(Stream stream) : this(stream, false)
+        {
+        }
+
+        public XmkBlobsStreamReader(Stream stream, bool leaveOpen) : this(stream, new XmkBlobsByteArrayReaderFactory(), leaveOpen)
+        {
+        }
 
         public XmkBlobsStreamReader(Stream stream, IXmkBlobsByteArrayReaderFactory readerFactory) : this(stream, readerFactory, false)
         {

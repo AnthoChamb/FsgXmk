@@ -1,6 +1,7 @@
 ﻿using FsgXmk.Abstractions.Interfaces;
 using FsgXmk.Abstractions.Interfaces.Factories;
 using FsgXmk.Abstractions.Interfaces.IO;
+using FsgXmk.Factories;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,6 +20,21 @@ namespace FsgXmk.IO
 
         private readonly bool _leaveOpen;
         private bool _disposed;
+
+        public XmkStreamReader(Stream stream) : this(stream, false)
+        {
+        }
+
+        public XmkStreamReader(Stream stream, bool leaveOpen)
+            : this(stream,
+                   new XmkHeaderStreamReaderFactory(new XmkHeaderByteArrayReaderFactory()),
+                   new XmkTempoStreamReaderFactory(new XmkTempoByteArrayReaderFactory()),
+                   new XmkTimeSignatureStreamReaderFactory(new XmkTimeSignatureByteArrayReaderFactory()),
+                   new XmkEventStreamReaderFactory(new XmkEventByteArrayReaderFactory()),
+                   new XmkBlobsStreamReaderFactory(new XmkBlobsByteArrayReaderFactory()),
+                   leaveOpen)
+        {
+        }
 
         public XmkStreamReader(Stream stream,
                                IXmkHeaderStreamReaderFactory headerReaderFactory,
