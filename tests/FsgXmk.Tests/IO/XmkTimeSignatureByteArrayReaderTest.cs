@@ -1,0 +1,101 @@
+﻿using FsgXmk.Abstractions;
+using FsgXmk.Abstractions.Interfaces;
+using FsgXmk.Abstractions.Interfaces.Factories;
+using FsgXmk.Factories;
+using System.Buffers;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace FsgXmk.Tests.IO
+{
+    public class XmkTimeSignatureByteArrayReaderTest
+    {
+        protected virtual IXmkTimeSignatureByteArrayReaderFactory Factory { get; } = new XmkTimeSignatureByteArrayReaderFactory();
+
+        [Fact]
+        public void Read_ReturnsXmkTimeSignature()
+        {
+            // Arrange
+            var buffer = ArrayPool<byte>.Shared.Rent(XmkConstants.XmkTimeSignatureSize);
+            try
+            {
+                buffer[0] = 0x00;
+                buffer[1] = 0x00;
+                buffer[2] = 0x00;
+                buffer[3] = 0x00;
+                buffer[4] = 0x00;
+                buffer[5] = 0x00;
+                buffer[6] = 0x00;
+                buffer[7] = 0x01;
+                buffer[8] = 0x00;
+                buffer[9] = 0x00;
+                buffer[10] = 0x00;
+                buffer[11] = 0x04;
+                buffer[12] = 0x00;
+                buffer[13] = 0x00;
+                buffer[14] = 0x00;
+                buffer[15] = 0x04;
+
+                // Act
+                IXmkTimeSignature timeSignature;
+                using (var reader = Factory.Create(buffer, 0, XmkConstants.XmkTimeSignatureSize))
+                {
+                    timeSignature = reader.Read();
+                }
+
+                // Assert
+                Assert.Equal<uint>(0, timeSignature.Ticks);
+                Assert.Equal<uint>(1, timeSignature.Measure);
+                Assert.Equal<uint>(4, timeSignature.Numerator);
+                Assert.Equal<uint>(4, timeSignature.Denominator);
+            }
+            finally
+            {
+                ArrayPool<byte>.Shared.Return(buffer);
+            }
+        }
+
+        [Fact]
+        public async Task ReadAsync_ReturnsXmkTimeSignature()
+        {
+            // Arrange
+            var buffer = ArrayPool<byte>.Shared.Rent(XmkConstants.XmkTimeSignatureSize);
+            try
+            {
+                buffer[0] = 0x00;
+                buffer[1] = 0x00;
+                buffer[2] = 0x00;
+                buffer[3] = 0x00;
+                buffer[4] = 0x00;
+                buffer[5] = 0x00;
+                buffer[6] = 0x00;
+                buffer[7] = 0x01;
+                buffer[8] = 0x00;
+                buffer[9] = 0x00;
+                buffer[10] = 0x00;
+                buffer[11] = 0x04;
+                buffer[12] = 0x00;
+                buffer[13] = 0x00;
+                buffer[14] = 0x00;
+                buffer[15] = 0x04;
+
+                // Act
+                IXmkTimeSignature timeSignature;
+                using (var reader = Factory.Create(buffer, 0, XmkConstants.XmkTimeSignatureSize))
+                {
+                    timeSignature = await reader.ReadAsync();
+                }
+
+                // Assert
+                Assert.Equal<uint>(0, timeSignature.Ticks);
+                Assert.Equal<uint>(1, timeSignature.Measure);
+                Assert.Equal<uint>(4, timeSignature.Numerator);
+                Assert.Equal<uint>(4, timeSignature.Denominator);
+            }
+            finally
+            {
+                ArrayPool<byte>.Shared.Return(buffer);
+            }
+        }
+    }
+}
