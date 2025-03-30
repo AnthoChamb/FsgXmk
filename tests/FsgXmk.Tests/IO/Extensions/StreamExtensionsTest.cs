@@ -23,7 +23,7 @@ namespace FsgXmk.Tests.IO.Extensions
                 }
 
                 // Assert
-                Assert.Equal(stackalloc byte[] { 1, 2, 3, 4 }, buffer.AsSpan().Slice(0, 4));
+                Assert.Equal(stackalloc byte[] { 1, 2, 3, 4 }, buffer.AsSpan(0, 4));
             }
             finally
             {
@@ -69,7 +69,7 @@ namespace FsgXmk.Tests.IO.Extensions
                 }
 
                 // Assert
-                Assert.Equal(stackalloc byte[] { 1, 2, 3, 4 }, buffer.AsSpan().Slice(0, 4));
+                Assert.Equal(stackalloc byte[] { 1, 2, 3, 4 }, buffer.AsSpan(0, 4));
             }
             finally
             {
