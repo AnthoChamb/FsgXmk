@@ -86,7 +86,7 @@ types:
       xmk_event_type:
         3: section
         4: hopo_detection
-        78: highway
+        56: highway
         0: casual
         8: easy
         16: medium

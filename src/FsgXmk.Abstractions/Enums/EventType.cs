@@ -5,7 +5,7 @@
         None = 0,
         Section = 0b0000_0011,
         HopoDetection = 0b0000_0100,
-        Highway = 0b0100_1110,
+        Highway = 0b0011_1000,
         Casual = 0b0000_0000,
         Easy = 0b0000_1000,
         Medium = 0b0001_0000,
