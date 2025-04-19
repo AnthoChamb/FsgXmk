@@ -2,6 +2,7 @@
 {
     public enum Note : byte
     {
+        None = 0,
         CasualOpen = 1,
         CasualHp = 3,
         EasyB1 = 5,

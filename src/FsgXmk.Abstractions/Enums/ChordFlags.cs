@@ -5,6 +5,7 @@ namespace FsgXmk.Abstractions.Enums
     [Flags]
     public enum ChordFlags : ushort
     {
+        None = 0,
         Barre = 0b0000_0010,
         B1 = 0b0000_0100,
         B2 = 0b0000_1000,

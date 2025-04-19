@@ -2,6 +2,7 @@
 {
     public enum EventType : byte
     {
+        None = 0,
         Section = 0b0000_0011,
         HopoDetection = 0b0000_0100,
         Highway = 0b0100_1110,
