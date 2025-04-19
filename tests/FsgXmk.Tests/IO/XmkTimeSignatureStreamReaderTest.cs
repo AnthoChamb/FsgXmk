@@ -24,11 +24,11 @@ namespace FsgXmk.Tests.IO
                 buffer[0] = 0x00;
                 buffer[1] = 0x00;
                 buffer[2] = 0x00;
-                buffer[3] = 0x00;
+                buffer[3] = 0xF0;
                 buffer[4] = 0x00;
                 buffer[5] = 0x00;
                 buffer[6] = 0x00;
-                buffer[7] = 0x01;
+                buffer[7] = 0x02;
                 buffer[8] = 0x00;
                 buffer[9] = 0x00;
                 buffer[10] = 0x00;
@@ -47,8 +47,8 @@ namespace FsgXmk.Tests.IO
                 }
 
                 // Assert
-                Assert.Equal<uint>(0, timeSignature.Ticks);
-                Assert.Equal<uint>(1, timeSignature.Measure);
+                Assert.Equal<uint>(240, timeSignature.Ticks);
+                Assert.Equal<uint>(2, timeSignature.Measure);
                 Assert.Equal<uint>(4, timeSignature.Numerator);
                 Assert.Equal<uint>(4, timeSignature.Denominator);
             }
@@ -68,11 +68,11 @@ namespace FsgXmk.Tests.IO
                 buffer[0] = 0x00;
                 buffer[1] = 0x00;
                 buffer[2] = 0x00;
-                buffer[3] = 0x00;
+                buffer[3] = 0xF0;
                 buffer[4] = 0x00;
                 buffer[5] = 0x00;
                 buffer[6] = 0x00;
-                buffer[7] = 0x01;
+                buffer[7] = 0x02;
                 buffer[8] = 0x00;
                 buffer[9] = 0x00;
                 buffer[10] = 0x00;
@@ -91,8 +91,8 @@ namespace FsgXmk.Tests.IO
                 }
 
                 // Assert
-                Assert.Equal<uint>(0, timeSignature.Ticks);
-                Assert.Equal<uint>(1, timeSignature.Measure);
+                Assert.Equal<uint>(240, timeSignature.Ticks);
+                Assert.Equal<uint>(2, timeSignature.Measure);
                 Assert.Equal<uint>(4, timeSignature.Numerator);
                 Assert.Equal<uint>(4, timeSignature.Denominator);
             }
