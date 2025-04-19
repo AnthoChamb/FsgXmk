@@ -258,6 +258,7 @@ namespace FsgXmk.Kaitai
                 ExpertW3 = 64,
                 ExpertOpen = 69,
                 ExpertHp = 74,
+                Highway = 78,
                 Section = 128,
             }
             public XmkEvent(KaitaiStream p__io, Xmk p__parent = null, Xmk p__root = null) : base(p__io)

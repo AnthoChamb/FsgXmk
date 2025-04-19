@@ -142,6 +142,7 @@ types:
         64: expert_w3
         69: expert_open
         74: expert_hp
+        78: highway
         128: section
   xmk_blobs:
     seq:

@@ -37,6 +37,7 @@
         ExpertW3 = 64,
         ExpertOpen = 69,
         ExpertHp = 74,
+        Highway = 78,
         Section = 128,
     }
 }
