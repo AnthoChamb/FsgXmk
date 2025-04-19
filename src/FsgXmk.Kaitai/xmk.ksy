@@ -77,6 +77,12 @@ types:
     enums:
       xmk_event_chord:
         2: barre
+        4: b1
+        8: b2
+        16: b3
+        32: w1
+        64: w2
+        128: w3
       xmk_event_type:
         3: section
         4: hopo_detection

@@ -187,6 +187,12 @@ namespace FsgXmk.Kaitai
             public enum XmkEventChord
             {
                 Barre = 2,
+                B1 = 4,
+                B2 = 8,
+                B3 = 16,
+                W1 = 32,
+                W2 = 64,
+                W3 = 128,
             }
 
             public enum XmkEventType
