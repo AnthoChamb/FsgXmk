@@ -1,7 +1,9 @@
 ﻿using FsgXmk.Abstractions.Interfaces.Factories;
 using FsgXmk.Factories;
+using System;
 using System.Buffers;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -226,6 +228,24 @@ namespace FsgXmk.Tests.IO
         }
 
         [Fact]
+        public void ReadEmpty_ReturnsEmptyXmkBlobs()
+        {
+            // Arrange
+            var blobsLength = 0;
+            var buffer = Array.Empty<byte>();
+
+            // Act
+            IEnumerable<string> blobs;
+            using (var reader = Factory.Create(buffer, 0, blobsLength))
+            {
+                blobs = reader.Read((uint) blobsLength);
+            }
+
+            // Assert
+            Assert.Equal(Enumerable.Empty<string>(), blobs);
+        }
+
+        [Fact]
         public async Task ReadAsync_ReturnsXmkBlobs()
         {
             // Arrange
@@ -437,6 +457,24 @@ namespace FsgXmk.Tests.IO
             {
                 ArrayPool<byte>.Shared.Return(buffer);
             }
+        }
+
+        [Fact]
+        public async Task ReadEmptyAsync_ReturnsEmptyXmkBlobs()
+        {
+            // Arrange
+            var blobsLength = 0;
+            var buffer = Array.Empty<byte>();
+
+            // Act
+            IEnumerable<string> blobs;
+            using (var reader = Factory.Create(buffer, 0, blobsLength))
+            {
+                blobs = await reader.ReadAsync((uint) blobsLength);
+            }
+
+            // Assert
+            Assert.Equal(Enumerable.Empty<string>(), blobs);
         }
     }
 }
