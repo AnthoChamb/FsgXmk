@@ -4,6 +4,7 @@ using FsgXmk.Factories;
 #if NETSTANDARD2_0
 using FsgXmk.IO.Extensions;
 #endif
+using System.Buffers;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -57,13 +58,19 @@ namespace FsgXmk.IO
                 return Enumerable.Empty<string>();
             }
 
-            var buffer = new byte[blobsLength];
-
-            _stream.ReadExactly(buffer, 0, buffer.Length);
-
-            using (var reader = _readerFactory.Create(buffer, 0, buffer.Length))
+            var buffer = ArrayPool<byte>.Shared.Rent((int) blobsLength);
+            try
             {
-                return reader.Read(blobsLength);
+                _stream.ReadExactly(buffer, 0, (int) blobsLength);
+
+                using (var reader = _readerFactory.Create(buffer, 0, (int) blobsLength))
+                {
+                    return reader.Read(blobsLength);
+                }
+            }
+            finally
+            {
+                ArrayPool<byte>.Shared.Return(buffer);
             }
         }
 
@@ -74,13 +81,19 @@ namespace FsgXmk.IO
                 return Enumerable.Empty<string>();
             }
 
-            var buffer = new byte[blobsLength];
-
-            await _stream.ReadExactlyAsync(buffer, 0, buffer.Length);
-
-            using (var reader = _readerFactory.Create(buffer, 0, buffer.Length))
+            var buffer = ArrayPool<byte>.Shared.Rent((int) blobsLength);
+            try
             {
-                return await reader.ReadAsync(blobsLength);
+                await _stream.ReadExactlyAsync(buffer, 0, (int) blobsLength);
+
+                using (var reader = _readerFactory.Create(buffer, 0, (int) blobsLength))
+                {
+                    return await reader.ReadAsync(blobsLength);
+                }
+            }
+            finally
+            {
+                ArrayPool<byte>.Shared.Return(buffer);
             }
         }
     }
