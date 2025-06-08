@@ -7,21 +7,33 @@ namespace FsgXmk.IO.Extensions
     {
         public static void ReadExactly(this Stream stream, byte[] buffer, int offset, int count)
         {
-            var bytesRead = stream.Read(buffer, offset, count);
-
-            if (bytesRead != count)
+            var totalRead = 0;
+            while (totalRead < count)
             {
-                ThrowHelper.ThrowEndOfStreamException();
+                var read = stream.Read(buffer, offset + totalRead, count - totalRead);
+
+                if (read == 0)
+                {
+                    ThrowHelper.ThrowEndOfStreamException();
+                }
+
+                totalRead += read;
             }
         }
 
         public static async Task ReadExactlyAsync(this Stream stream, byte[] buffer, int offset, int count)
         {
-            var bytesRead = await stream.ReadAsync(buffer, offset, count);
-
-            if (bytesRead != count)
+            var totalRead = 0;
+            while (totalRead < count)
             {
-                ThrowHelper.ThrowEndOfStreamException();
+                var read = await stream.ReadAsync(buffer, offset + totalRead, count - totalRead).ConfigureAwait(false);
+
+                if (read == 0)
+                {
+                    ThrowHelper.ThrowEndOfStreamException();
+                }
+
+                totalRead += read;
             }
         }
     }
